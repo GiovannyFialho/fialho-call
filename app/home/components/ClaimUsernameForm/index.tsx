@@ -1,5 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Text, TextInput } from "@ignite-ui/react";
+import { useRouter } from "next/navigation";
 import { ArrowRight } from "phosphor-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -30,8 +31,12 @@ export function ClaimUsernameForm() {
     resolver: zodResolver(claimUsernameFormSchema),
   });
 
+  const { push } = useRouter();
+
   async function handleClaimUsername(data: ClaimUsernameFormData) {
-    console.log(data);
+    const { username } = data;
+
+    push(`/register?username=${username}`);
   }
 
   return (

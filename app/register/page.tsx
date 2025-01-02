@@ -2,6 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Heading, MultiStep, Text, TextInput } from "@ignite-ui/react";
+import { useSearchParams } from "next/navigation";
 import { ArrowRight } from "phosphor-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -24,12 +25,15 @@ const registerFormSchema = z.object({
 type RegisterFormData = z.infer<typeof registerFormSchema>;
 
 export default function Register() {
+  const searchParams = useSearchParams();
+
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<RegisterFormData>({
     resolver: zodResolver(registerFormSchema),
+    defaultValues: { username: searchParams.get("username") ?? "" },
   });
 
   function handleRegister(data: RegisterFormData) {
