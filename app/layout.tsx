@@ -2,6 +2,7 @@
 
 import { globalStyles } from "@/app/globals";
 import { getCssText } from "@ignite-ui/react";
+import { SessionProvider } from "next-auth/react";
 import { Roboto } from "next/font/google";
 
 const roboto = Roboto({
@@ -31,7 +32,9 @@ export default function RootLayout({
         <title>Fialho Call</title>
       </head>
 
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <SessionProvider>{children}</SessionProvider>
+      </body>
     </html>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { Button, Heading, MultiStep, Text } from "@ignite-ui/react";
+import { signIn } from "next-auth/react";
 import { ArrowRight } from "phosphor-react";
 
 import { Container, Header } from "@/app/register/styles";
@@ -28,7 +29,11 @@ export default function Register() {
         <ConnectItem>
           <Text>Google Calendar</Text>
 
-          <Button variant="secondary" size="sm">
+          <Button
+            variant="secondary"
+            size="sm"
+            onClick={() => signIn("google")}
+          >
             Conectar
             <ArrowRight />
           </Button>
