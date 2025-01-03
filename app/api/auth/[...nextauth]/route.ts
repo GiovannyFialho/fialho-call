@@ -39,6 +39,10 @@ export const authOptions: NextAuthOptions = {
 
       return true; // Login bem-sucedido
     },
+
+    async session({ session, user }) {
+      return { ...session, user };
+    },
   },
 };
 

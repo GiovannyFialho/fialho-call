@@ -20,6 +20,8 @@ export default function Register() {
   const hasAuthError = !!searchParams.get("error");
   const isSignedId = session.status === "authenticated";
 
+  console.log({ session });
+
   async function handleConnectCalendar() {
     await signIn("google");
   }
