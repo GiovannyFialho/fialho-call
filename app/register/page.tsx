@@ -62,7 +62,7 @@ export default function Register() {
   return (
     <Container>
       <Header>
-        <Heading as="strong">Bem-vindo ao Ignite Call!</Heading>
+        <Heading as="strong">Bem-vindo ao Fialho Call!</Heading>
 
         <Text>
           Precisamos de algumas informações para criar seu perfil! Ah, você pode
@@ -76,7 +76,7 @@ export default function Register() {
         <label>
           <Text size="sm">Nome de usuário</Text>
           <TextInput
-            prefix="ignite.com/"
+            prefix="fialho.com/"
             placeholder="seu-usuário"
             {...register("username")}
           />
