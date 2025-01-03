@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Heading, MultiStep, Text, TextInput } from "@ignite-ui/react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { ArrowRight } from "phosphor-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -29,6 +29,7 @@ type RegisterFormData = z.infer<typeof registerFormSchema>;
 
 export default function Register() {
   const searchParams = useSearchParams();
+  const { push } = useRouter();
 
   const {
     register,
@@ -45,6 +46,8 @@ export default function Register() {
         name: data.name,
         username: data.username,
       });
+
+      push(`/register/connect-calendar`);
     } catch (err) {
       if (err instanceof AxiosError && err?.response?.data?.message) {
         alert(err.response.data.message);
