@@ -40,7 +40,10 @@ export async function POST(request: NextRequest) {
         })
       );
 
-      return NextResponse.json({ status: 201 });
+      return NextResponse.json(
+        { message: "Resource created successfully" },
+        { status: 201 }
+      );
     } catch (error) {
       console.error("Prisma error:", error);
 
@@ -55,8 +58,4 @@ export async function POST(request: NextRequest) {
       { status: 400 }
     );
   }
-}
-
-export function OPTIONS() {
-  return NextResponse.json(null, { status: 204 });
 }

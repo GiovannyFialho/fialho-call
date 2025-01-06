@@ -2,7 +2,7 @@
 
 import { Button, Heading, MultiStep, Text } from "@ignite-ui/react";
 import { signIn, useSession } from "next-auth/react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { ArrowRight, Check } from "phosphor-react";
 
 import { Container, Header } from "@/app/register/styles";
@@ -16,14 +16,17 @@ import {
 export default function Register() {
   const session = useSession();
   const searchParams = useSearchParams();
+  const { push } = useRouter();
 
   const hasAuthError = !!searchParams.get("error");
   const isSignedId = session.status === "authenticated";
 
-  console.log({ session });
-
   async function handleConnectCalendar() {
     await signIn("google");
+  }
+
+  function handleNavigateToNextStep() {
+    push("/register/time-intervals");
   }
 
   return (
@@ -67,7 +70,11 @@ export default function Register() {
           </AuthError>
         )}
 
-        <Button type="submit" disabled={!isSignedId}>
+        <Button
+          type="button"
+          onClick={handleNavigateToNextStep}
+          disabled={!isSignedId}
+        >
           Próximo passo
           <ArrowRight />
         </Button>

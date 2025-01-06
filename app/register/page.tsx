@@ -55,7 +55,7 @@ export default function Register() {
         return;
       }
 
-      console.log(`default::::: `, err);
+      console.error(`default::::: `, err);
     }
   }
 
