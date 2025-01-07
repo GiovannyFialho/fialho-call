@@ -28,8 +28,6 @@ export default function RootLayout({
           }}
           suppressHydrationWarning
         />
-        <meta name="description" content="Project Fialho Call" />
-        <title>Fialho Call</title>
       </head>
 
       <body className="antialiased">
