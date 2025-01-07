@@ -5,6 +5,8 @@ import { getCssText } from "@ignite-ui/react";
 import { SessionProvider } from "next-auth/react";
 import { Roboto } from "next/font/google";
 
+import "@/app/lib/dayjs";
+
 const roboto = Roboto({
   weight: ["400", "500", "700"],
   subsets: ["latin"],
