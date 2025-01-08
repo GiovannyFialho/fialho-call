@@ -29,7 +29,10 @@ export async function GET(request: NextRequest) {
 
   // Se a data `referenceDate` for antes do dia atual - não deve retornada nada
   if (isPastDate) {
-    return NextResponse.json({ availability: [] }, { status: 200 });
+    return NextResponse.json(
+      { possibleTimes: [], availableTimes: [] },
+      { status: 200 }
+    );
   }
 
   const userAvailability = await prisma.userTimeInterval.findFirst({
@@ -40,7 +43,10 @@ export async function GET(request: NextRequest) {
   });
 
   if (!userAvailability) {
-    return NextResponse.json({ availability: [] }, { status: 200 });
+    return NextResponse.json(
+      { possibleTimes: [], availableTimes: [] },
+      { status: 200 }
+    );
   }
 
   const { time_start_in_minutes, time_end_in_minutes } = userAvailability;
