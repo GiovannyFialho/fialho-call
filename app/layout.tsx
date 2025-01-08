@@ -2,10 +2,12 @@
 
 import { globalStyles } from "@/app/globals";
 import { getCssText } from "@ignite-ui/react";
+import { QueryClientProvider } from "@tanstack/react-query";
 import { SessionProvider } from "next-auth/react";
 import { Roboto } from "next/font/google";
 
 import "@/app/lib/dayjs";
+import { queryClient } from "@/app/lib/react-query";
 
 const roboto = Roboto({
   weight: ["400", "500", "700"],
@@ -33,7 +35,9 @@ export default function RootLayout({
       </head>
 
       <body className="antialiased">
-        <SessionProvider>{children}</SessionProvider>
+        <QueryClientProvider client={queryClient}>
+          <SessionProvider>{children}</SessionProvider>
+        </QueryClientProvider>
       </body>
     </html>
   );
