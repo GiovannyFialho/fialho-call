@@ -56,7 +56,7 @@ export async function GET(request: NextRequest) {
 
   const possibleTimes = Array.from({ length: endHour - startHour }).map(
     (_, index) => {
-      return index + 1;
+      return startHour + index;
     }
   );
 
