@@ -36,16 +36,16 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${user.name}'s Schedule`,
-    description: user.bio || "User schedule page",
+    title: `Fialho Call | Agenda de ${user.name}`,
+    description: user.bio || "Agendamentos do usuário",
     openGraph: {
-      title: `${user.name}'s Schedule`,
+      title: `Agenda de ${user.name}`,
       description: user.bio ?? "",
       images: user.avatar_url
         ? [
             {
               url: user.avatar_url,
-              alt: `${user.name}'s avatar`,
+              alt: `Avatar de ${user.name}`,
             },
           ]
         : undefined,
